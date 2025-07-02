@@ -9,7 +9,6 @@ Notre dossier `src` situé à la racine du projet contiendra 4 dossiers:
 Voici un exemple:  
 
 <img src="assets/project_struct.png" alt="project structure" width="200" height="800">
-<br>
 
 # Project Setup
 
