@@ -5,7 +5,7 @@ async function main() {
   const qb = new SelectQueryBuilder<User>('users');
   const sql = qb.select(['id', 'name'])
                 .where({ id: 1 })
-                .toSQL();
+                .build();
   // sql = "SELECT id, name FROM users WHERE id = '1'"
   console.log(sql)
 }

@@ -10,6 +10,6 @@ export abstract class BaseQueryBuilder<T> {
   abstract insert(data: Partial<T>): this;
   abstract update(data: Partial<T>): this;
   abstract delete(): this;
-  abstract toSQL(): string;  // génère la requête SQL brute
+  abstract build(): string;  // génère la requête SQL brute
   abstract execute(): Promise<T>;
 }
