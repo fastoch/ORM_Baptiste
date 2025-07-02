@@ -8,24 +8,30 @@ Notre dossier `src` situé à la racine du projet contiendra 4 dossiers:
 
 Voici un exemple:  
 
-<img src="assets/image.png" alt="project structure" width="300" height="1200">
+<img src="assets/project_struct.png" alt="project structure" width="300" height="1200">
+<br><br>
 
 # Project Setup
 
-- J'ai installé XAMPP sur ma machine fedora Linux (XAMPP 
+- J'ai installé XAMPP sur ma machine fedora Linux 
   - X = Cross-platform 
   - A = Apache 
   - M = MySQL 
   - P = PHP
   - P = Perl
 - Pour lancer les services XAMPP: `sudo /opt/lampp/lampp start`
+- Pour gérer les BDD, ouvrir un navigateur Web et aller sur http://localhost/phpmyadmin/
+- création d'une nouvelle BDD nommée 'ORM'
 
 # TODO
 
 - Utiliser `create_tables.sql` pour créer les tables 'user' et 'post' dans notre BDD 
   - la création des futures tables se fera via la fonctionnalité "Migrations" qu'on implémentera par la suite
-- côte TypeScript, implémenter 2 classes: BaseQueryBuilder et InsertQueryBuilder
-- instancier la classe Insert depuis un main.ts et console.log des requêtes générées
+- côte TypeScript, implémenter 2 classes: 
+  - BaseQueryBuilder 
+  - InsertQueryBuilder
+- instancier la classe InsertQueryBuilder depuis un `main.ts` 
+- le `main.ts` contiendra aussi un `console.log` des requêtes générées
 - exécuter le SQL généré dans un soft dédié (PHPmyAdmin)
-- Construire SelectQueryBuilder
+- Construire une classe SelectQueryBuilder
 
