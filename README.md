@@ -2,7 +2,7 @@
 
 Notre dossier `src` situé à la racine du projet contiendra 4 dossiers:
 - `connection`,
-- `data_models`,
+- `models`,
 - `query_builders`,
 - `types` 
 
@@ -51,7 +51,6 @@ Voici un exemple:
   "exclude": ["node_modules", "dist"]
 }
 ```
-
 
 # TODO
 
