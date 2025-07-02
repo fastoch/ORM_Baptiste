@@ -5,11 +5,10 @@ export abstract class BaseQueryBuilder<T> {
     this.tableName = tableName;
   }
 
-  abstract select(fields?: string[]): this;
-  abstract where(condition: Partial<T>): this;
-  abstract insert(data: Partial<T>): this;
-  abstract update(data: Partial<T>): this;
-  abstract delete(): this;
-  abstract build(): string;  // génère la requête SQL brute
-  abstract execute(): Promise<T>;
+  /**
+   * // génère la requête SQL (à implémenter dans les classes enfants)
+   * @param tableName = nom de la table ciblée dans la BDD
+   * @param data = données à insérer, supprimer, récupérer ou modifier
+   */
+  abstract buildQuery(): string;  
 }

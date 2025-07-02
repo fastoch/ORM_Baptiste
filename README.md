@@ -19,6 +19,7 @@ Voici un exemple:
   - P = PHP
   - P = Perl
 - Pour lancer les services XAMPP: `sudo /opt/lampp/lampp start`
+  - j'ai créé un alias dans mon ~/.zshrc = `xampp`
 - Pour gérer les BDD, ouvrir un navigateur Web et aller sur http://localhost/phpmyadmin/
 - création d'une nouvelle BDD nommée 'ORM'
 - création d'un fichier `.gitignore` pour exclure certains fichiers de la gestion de version Git 
@@ -63,7 +64,4 @@ Voici un exemple:
 - [ ] le `main.ts` contiendra aussi un `console.log` des requêtes générées
 - [ ] exécuter le SQL généré dans un soft dédié (PHPmyAdmin)
 - [ ] Construire une classe SelectQueryBuilder
-
-
-
 
