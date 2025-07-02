@@ -1,14 +1,15 @@
 export abstract class BaseQueryBuilder<T> {
-  protected tableName: string;
+  protected tableName: string;  // targeted SQL table
 
   constructor(tableName: string) {
     this.tableName = tableName;
   }
 
   /**
-   * // génère la requête SQL (à implémenter dans les classes enfants)
-   * @param tableName = nom de la table ciblée dans la BDD
-   * @param data = données à insérer, supprimer, récupérer ou modifier
+   * méthode qui génère la requête SQL (implémentée dans les classes enfants)
    */
   abstract buildQuery(): string;  
+
+  // TODO: implement shared utility method that formats the SQL query
+
 }
