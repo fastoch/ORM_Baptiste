@@ -20,11 +20,13 @@ Voici un exemple:
 - Pour lancer les services XAMPP: `sudo /opt/lampp/lampp start`
 - Pour gérer les BDD, ouvrir un navigateur Web et aller sur http://localhost/phpmyadmin/
 - création d'une nouvelle BDD nommée 'ORM'
+- création d'un fichier `.gitignore` pour exclure certains fichiers de la gestion de version Git 
 - installation du package **dotenv** via `npm i dotenv` 
   - pour gérer nos variables d'environnement et les charger depuis un fichier `.env`
 - création d'un fichier `.env` à la racine du projet pour y déclarer la variable de connection à notre BDD
 - installation du package **mysql2** via `npm i mysql2`
   - pour autoriser notre programme à se connecter à notre BDD MySQL et à interagir avec elle
+- `` pour initier notre projet TypeScript
 
 
 # TODO
