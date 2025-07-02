@@ -7,7 +7,6 @@ Notre dossier `src` situé à la racine du projet contiendra 4 dossiers:
 - `types` 
 
 Voici un exemple:  
-
 <img src="assets/project_struct.png" alt="project structure" width="200" height="800">
 
 # Project Setup
@@ -21,6 +20,12 @@ Voici un exemple:
 - Pour lancer les services XAMPP: `sudo /opt/lampp/lampp start`
 - Pour gérer les BDD, ouvrir un navigateur Web et aller sur http://localhost/phpmyadmin/
 - création d'une nouvelle BDD nommée 'ORM'
+- installation du package **dotenv** via `npm i dotenv` 
+  - pour gérer nos variables d'environnement et les charger depuis un fichier `.env`
+- création d'un fichier `.env` à la racine du projet pour y déclarer la variable de connection à notre BDD
+- installation du package **mysql2** via `npm i mysql2`
+  - pour autoriser notre programme à se connecter à notre BDD MySQL et à interagir avec elle
+
 
 # TODO
 
