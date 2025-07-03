@@ -1,3 +1,8 @@
+// export interface QueryResult<T> {
+//   sql: string;
+//   params: <T>[];
+// }
+
 export abstract class BaseQueryBuilder<T> {
   protected tableName: string;  // targeted SQL table
 
@@ -10,6 +15,6 @@ export abstract class BaseQueryBuilder<T> {
    */
   abstract buildQuery(): string;  
 
-  // TODO: implement shared utility method that formats the SQL query
+  // TODO: implement Paramterization to prevent SQL injection
 
 }
