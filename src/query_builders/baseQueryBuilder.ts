@@ -1,5 +1,5 @@
 /**
- * Type alias for all query builders (could be an interface)
+ * Type alias for what's common to all query builders (could be an interface)
  */
 export type QueryBuilder = {
   buildQuery(): string; // returns the complete SQL query as a string
@@ -20,6 +20,28 @@ export abstract class BaseQueryBuilder implements QueryBuilder {
   protected setTable(tableName: string): this {
     this.tableName = tableName;
     return this;
+  }
+
+ /**
+   * Formats a value for inclusion in an SQL query string.
+   * Handles null, undefined, strings, booleans, and numbers.
+   * @param value The value to format.
+   * @returns The formatted value as a string or number.
+   */
+  protected formatValue(value: any): string | number {
+    if (value === null || typeof value === 'undefined') {
+      return 'NULL';
+    }
+    if (typeof value === 'string') {
+      // Escape single quotes to prevent basic SQL injection (to be improved with parameterized queries)
+      const escapedValue = value.replace(/'/g, "''");
+      return `'${escapedValue}'`;
+    }
+    if (typeof value === 'boolean') {
+      return value ? 'TRUE' : 'FALSE';
+    }
+    // numbers are returned as is
+    return value;
   }
 
   /**

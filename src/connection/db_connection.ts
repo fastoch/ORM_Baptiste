@@ -1,7 +1,12 @@
 /**
- * this will be the parent class for all types of connection to a database
+ * Type alias defining methods to connect to the database
  */
-export abstract class Connection {
+export type DatabaseConnection = {
+  connect(): Promise<any>;
+  disconnect(): Promise<void>;
+}
+
+export abstract class Connection implements DatabaseConnection {
   protected host: string;
   protected port: number;
   protected user: string;

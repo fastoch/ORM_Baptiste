@@ -66,7 +66,7 @@ Voici un exemple:
 
 # TODO du 3 juillet
 
-- [ ] Coder le code de connection
+- [ ] Implémenter la fonctionnalité de connection
 - [ ] implémenter la connection dans BaseModel
 - [ ] Utiliser la fonction create de BaseModel (ou de sa classe fille) pour insérer un user dans la DB
 - [ ] Construire la classe SelectQueryBuilder
