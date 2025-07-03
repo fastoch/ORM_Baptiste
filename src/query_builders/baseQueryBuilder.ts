@@ -1,13 +1,17 @@
-// export interface QueryResult<T> {
-//   sql: string;
-//   params: <T>[];
-// }
+/**
+ * Abstract base class for all query builders
+ */
+export abstract class BaseQueryBuilder {
+  protected tableName: string = "";  // targeted SQL table
 
-export abstract class BaseQueryBuilder<T> {
-  protected tableName: string;  // targeted SQL table
-
-  constructor(tableName: string) {
+  /**
+   * sets the table on which the query will be executed 
+   * @param tableName 
+   * @returns the current instance (required to chain methods when building the query)
+   */
+  protected setTable(tableName: string): this {
     this.tableName = tableName;
+    return this;
   }
 
   /**
@@ -15,6 +19,6 @@ export abstract class BaseQueryBuilder<T> {
    */
   abstract buildQuery(): string;  
 
-  // TODO: implement Paramterization to prevent SQL injection
+  // TODO: implement a method that generates parameterized queries to prevent SQL injection
 
 }

@@ -1,6 +1,6 @@
 import { BaseQueryBuilder } from "./baseQueryBuilder";  
 
-export class SelectQueryBuilder<T> extends BaseQueryBuilder<T> {
+export class SelectQueryBuilder<T> extends BaseQueryBuilder {
   buildQuery(): string {
     return ``
   }
