@@ -18,11 +18,38 @@ export class InsertQueryBuilder extends BaseQueryBuilder {
   }
 
   /**
+   * sets the values to be inserted
+   */
+  values(data: Record<string, any>): this {
+    this.data = data;
+    return this;
+  }
+
+  /**
    * method that builds and returns an SQL INSERT query as a string. 
    */
   buildQuery(): string {
-    const columns = Object.keys(this.data)
-    
-    return ``
+    const columns = Object.keys(this.data); // retrieve the column names
+    const values = Object.values(this.data); // retrieve the corresponding values
+
+    // formate les values en fonction de leur type 
+    const formattedValues = values.map(value => {
+      if (value === null || typeof value === 'undefined') {
+        return 'NULL';
+      }
+      if (typeof value === 'string') {
+        // Escape single quotes to prevent basic SQL injection (to be improved with parameterized queries)
+        const escapedValue = value.replace(/'/g, "''");
+        return `'${escapedValue}'`;
+      }
+      if (typeof value === 'boolean') {
+        return value ? 'TRUE' : 'FALSE';
+      }
+      // numbers are returned as is
+      return value;
+    });
+
+    // renvoie la requête SQL
+    return `INSERT INTO ${this.tableName} (${columns.join(', ')}) VALUES (${formattedValues.join(', ')})`;
   }
 }

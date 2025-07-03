@@ -57,9 +57,9 @@ Voici un exemple:
 
 - [x] Utiliser `create_tables.sql` pour créer les tables 'user' et 'post' dans notre BDD
   - la création des futures tables se fera via la fonctionnalité "Migrations" qu'on implémentera par la suite
-- [ ] côte TypeScript, implémenter 2 classes: 
+- [x] côte TypeScript, implémenter 2 classes: 
   - [x] BaseQueryBuilder 
-  - [ ] InsertQueryBuilder
+  - [x] InsertQueryBuilder
 - [ ] instancier la classe InsertQueryBuilder depuis un `main.ts` 
 - [ ] le `main.ts` contiendra aussi un `console.log` des requêtes générées
 - [ ] exécuter le SQL généré dans un soft dédié (PHPmyAdmin)
