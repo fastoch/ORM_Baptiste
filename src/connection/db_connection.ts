@@ -16,12 +16,12 @@ export type DatabaseConnection = {
   disconnect(): Promise<void>;
   
   /**
-   * Executes an SQL query that returns multiple results
+   * Executes an SQL query that returns multiple results (from a SELECT statement)
    * @param query The SQL query to execute
    * @param params The query parameters
    * @returns An array of objects of the specified type
    */
-  query<T>(query: string, params?: any[]): Promise<T[]>;
+  executeMultiple<T>(query: string, params?: any[]): Promise<T[]>;
   
   /**
    * Executes an SQL query that returns a single result
