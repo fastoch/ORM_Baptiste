@@ -1,0 +1,82 @@
+classDiagram
+
+    class IQueryBuilder {
+
+        <<interface>>
+        +build() string
+
+    }
+
+    class BaseQueryBuilder {
+
+        <<abstract>>
+
+        #tableName: string
+
+        #setTable() this
+
+        +build() string
+
+        #formatValue() string
+
+    }
+
+    class SelectBuilder {
+
+        +from() this
+
+        +where() this
+
+        +orderBy() this
+
+        +limit() this
+
+        +build() string
+
+        +get() Promise
+
+        +first() Promise
+
+    }
+
+    class InsertBuilder {
+
+        +into() this
+
+        +values() this
+
+        +build() string
+
+    }
+
+    class UpdateBuilder {
+
+        +table() this
+
+        +set() this
+
+        +where() this
+
+        +build() string
+
+    }
+
+    class DeleteBuilder {
+
+        +from() this
+
+        +where() this
+
+        +build() string
+
+    }
+
+    BaseQueryBuilder ..|> IQueryBuilder
+
+    SelectBuilder --|> BaseQueryBuilder
+
+    InsertBuilder --|> BaseQueryBuilder
+
+    UpdateBuilder --|> BaseQueryBuilder
+
+    DeleteBuilder --|> BaseQueryBuilder

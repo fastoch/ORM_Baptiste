@@ -1,0 +1,57 @@
+classDiagram
+
+    class IModel {
+
+        <<interface>>
+
+        +save() Promise
+
+        +delete() Promise
+
+        +refresh() Promise
+
+    }
+
+    class BaseModel {
+
+        <<abstract>>
+
+        +static tableName: string
+
+        +static columns: Record
+
+        +static create() Promise
+
+        +static select() Promise 
+
+        +update() Promise
+
+        +delete() Promise
+
+    }
+
+    class Column {
+
+        <<interface>>
+
+        +type: ColumnType
+
+        +primaryKey?: boolean
+
+        +required?: boolean
+
+        +unique?: boolean
+
+    }
+
+    class ModelDefinition {
+
+        <<interface>>
+
+        +tableName: string
+
+        +columns: Record
+
+    }
+
+    BaseModel ..|> IModel

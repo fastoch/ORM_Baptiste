@@ -1,0 +1,35 @@
+classDiagram
+    class IDatabaseConnection {
+        <<interface>>
+        +connect() Promise
+        +disconnect() Promise
+        +query() Promise
+        +execute() Promise
+        +beginTransaction() Promise
+        +commit() Promise
+        +rollback() Promise
+    }
+    
+    class MySQLConnection {
+        -pool: Pool
+        -config: ConnectionConfig
+        +connect() Promise
+        +disconnect() Promise
+        +query() Promise
+        +execute() Promise
+        +beginTransaction() Promise
+        +commit() Promise
+        +rollback() Promise
+    }
+    
+    class ConnectionConfig {
+        <<interface>>
+        +host: string
+        +port: number
+        +user: string
+        +password: string
+        +database: string
+    }
+    
+    MySQLConnection ..|> IDatabaseConnection
+    MySQLConnection --> ConnectionConfig : uses
