@@ -53,17 +53,24 @@ Voici un exemple:
 }
 ```
 
-# TODO
+# TODO du 2 juillet
 
 - [x] Utiliser `create_tables.sql` pour créer les tables 'user' et 'post' dans notre BDD
   - la création des futures tables se fera via la fonctionnalité "Migrations" qu'on implémentera par la suite
 - [x] côte TypeScript, implémenter 2 classes: 
   - [x] BaseQueryBuilder 
   - [x] InsertQueryBuilder
-- [ ] instancier la classe InsertQueryBuilder depuis un `main.ts` 
-- [ ] le `main.ts` contiendra aussi un `console.log` des requêtes générées
-- [ ] exécuter le SQL généré dans un soft dédié (PHPmyAdmin)
-- [ ] Construire une classe SelectQueryBuilder
+- [x] instancier la classe InsertQueryBuilder depuis un `main.ts` 
+- [x] le `main.ts` contiendra aussi un `console.log` des requêtes générées
+- [x] exécuter le SQL généré dans un soft dédié (PHPmyAdmin) pour tester la validité de la requête
+
+# TODO du 3 juillet
+
+- [ ] Coder le code de connection
+- [ ] implémenter la connection dans BaseModel
+- [ ] Utiliser la fonction create de BaseModel (ou de sa classe fille) pour insérer un user dans la DB
+- [ ] Construire la classe SelectQueryBuilder
+- [ ] utiliser la fonction find pour trouver un User selon un filtre
 
 # Preventing SQL injection with Parameterization
 
