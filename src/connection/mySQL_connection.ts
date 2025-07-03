@@ -1,10 +1,14 @@
  //connection/mysql-connection.ts
 import * as mysql from 'mysql2/promise';
+import { config } from 'dotenv';  
 import { ConnectionConfig } from "./db_connection";
 import { DatabaseConnection } from "./db_connection";
 
+// Load environment variables from .env file
+config();
+
 /**
- * Implementation of IDatabaseConnection for MySQL
+ * Implementation of DatabaseConnection for MySQL
  */
 export class MySQLConnection implements DatabaseConnection {
   private session: mysql.Pool | null = null;
