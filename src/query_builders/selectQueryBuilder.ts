@@ -41,14 +41,18 @@ export class SelectQueryBuilder<T> extends BaseQueryBuilder {
   
   // The actual code that runs when where() is called, must have a signature compatible with the 2 signatures above
   where(column: string, operatorOrValue: any, value?: any): this {
+    // These 2 lines set the defaults for the 2-argument version
     let operator = '=';
     let conditionValue = operatorOrValue;
-
+    // check if the 3rd argument was passed
     if (value !== undefined) {
-      operator = String(operatorOrValue);
-      conditionValue = value;
+      // if we are in here, it means the user called the 3-argument version
+      // and then we must correct our initial 2-argument assumption
+      operator = String(operatorOrValue);  // the 2nd arg was the operator and needs to be converted to a string
+      conditionValue = value;              // the 3rd arg was the value
     }
 
+    // Build and store the clause
     this.whereClauses.push(`${column} ${operator} ${this.formatValue(conditionValue)}`);
     return this;
   }
