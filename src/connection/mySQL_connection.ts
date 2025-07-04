@@ -31,7 +31,7 @@ export class MySQLConnection implements DatabaseConnection {
       });
 
       // Check that the connection works
-      await this.pool.query("SELECT 1");
+      await this.pool.query("SELECT 1"); // WHAT DOES IT DO???
     } catch (error: any) {
       throw new Error(`Failed to connect to database: ${error.message}`);
     }
@@ -88,7 +88,7 @@ export class MySQLConnection implements DatabaseConnection {
   }
 
   /**
-   * Execites an INSERT query and returns the ID of the new row
+   * Executes an INSERT query and returns the ID of the new row
    * @param query - the SQL INSERT query to execute
    * @param params - the query parameters
    * @returns the ID of the inserted row

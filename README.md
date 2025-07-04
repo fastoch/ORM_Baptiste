@@ -81,15 +81,13 @@ We should handle SQL parameters separately from our query string.
 My current `buildQuery(): string` method encourages building a single string with values directly embedded,  
 which is a major security risk for SQL injection.  
 
-A much safer approach is to have `buildQuery` return an **object** containing the SQL query with placeholders (? or $1, $2, etc.),  
-and a separate array of values.  
+A much safer approach is to have `buildQuery` return an **object** containing the SQL query with placeholders (? or $1, $2, etc.), and a separate array of values.  
 
-This allows us to use prepared statements (or parameterized queries) in our database driver, which is the standard way to prevent SQL injection.
+This allows us to use prepared statements (= parameterized queries) in our database driver, which is the standard way to prevent SQL injection.
 
 ## What are SQL Parameters?
 
-SQL parameters are placeholders or variables used within SQL statements to represent values that will be supplied at execution time,  
-rather than hardcoding those values directly into the query.   
+SQL parameters are placeholders or variables used within SQL statements to represent values that will be supplied at execution time, rather than hardcoding those values directly into the query.   
 
 This allows us to write SQL queries that can be reused with different data inputs, increasing flexibility and security.   
 Parameters are typically represented as question marks (?) for unnamed parameters, or with a prefix like :name or @name for named parameters,  
@@ -101,7 +99,8 @@ SQL injection occurs when untrusted user input is concatenated directly into SQL
 and potentially execute malicious SQL code.  
 
 Parameterized queries (also called **prepared statements**) prevent this by separating SQL code from data:   
-the SQL statement is defined with placeholders, and **user input** is supplied as **parameters**, not as part of the SQL string.  
+the SQL statement is defined with **placeholders**, and the **user input** is supplied as **parameters**, 
+not as part of the SQL string.  
 
 The database engine treats parameter values strictly as data, not as executable code, regardless of their content.  
 This means that even if a user tries to inject SQL code via a parameter, it will not be executed, but rather treated as a literal value.
