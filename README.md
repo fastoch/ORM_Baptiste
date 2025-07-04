@@ -1,3 +1,7 @@
+# Version du formateur (Baptiste Dinahet)
+
+waiting for Baptiste to provide his repository URL
+
 # Structure du projet
 
 Notre dossier `src` situé à la racine du projet contiendra 4 dossiers:

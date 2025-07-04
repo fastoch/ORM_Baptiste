@@ -39,8 +39,8 @@ async function main() {
     // to return the query string and paramaters separately to prevent SQL injection.
     // For now, we'll define them manually here.
     const userData = {
-      username: "Baptiste",
-      email: "baptiste@orm.com",
+      username: "Fabrice",
+      email: "fabrice@orm.com",
       password: "a_very_secure_password"
     };
 

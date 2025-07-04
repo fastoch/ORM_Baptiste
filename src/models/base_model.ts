@@ -23,6 +23,27 @@ export abstract class BaseModel {
    */
   public static primaryKey: string = 'id';
 
-  
+  /**
+   * The properties of the model instance
+   * e.g. { id: 1, name, "John Doe", email: 'john@\example.com' }
+   */
+  [key: string]: any;
 
+  /**
+   * Creates an instance of a model.
+   * @param properties The properties to initialize the model with.
+   */
+  constructor(properties?: { [key: string]: any }) {
+      if (properties) {
+          Object.assign(this, properties);
+      }
+  }
+
+  /**
+   * Creates a new record in the database from the provided data.
+   * @param data The data for the new record.
+   * @returns A promise that resolves with the created model instance, fetched from the DB.
+   */
+  
+  // The implementation of this class needs to be completed
 }
