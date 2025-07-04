@@ -30,6 +30,15 @@ export type DatabaseConnection = {
    * @returns An object of the specified type
    */
   execute<T>(query: string, params?: any[]): Promise<T>;
+
+  /**
+   * Executes an INSERT query and returns the ID of the new row.
+   * This method is required because an INSERT statement doesn't return rows.
+   * @param query - the SQL INSERT query to execute
+   * @param params - the query parameters
+   * @returns the ID of the inserted row
+   */
+  executeInsert(query: string, params?: any[]): Promise<number>;
 }
 
 

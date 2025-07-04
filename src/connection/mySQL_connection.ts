@@ -1,4 +1,5 @@
 import * as mysql from 'mysql2/promise'; // the standard library for modern, asynchronous MySQL operations in Node.js
+import { OkPacket } from 'mysql2'; // the OkPacket type allows us to safely access the insertId in executeInsert()
 import { ConnectionConfig } from "./db_connection";
 import { DatabaseConnection } from "./db_connection";
 
@@ -86,6 +87,14 @@ export class MySQLConnection implements DatabaseConnection {
       throw new Error(`Execution failed: ${error.message}`);
     }
   }
+
+  /**
+   * Execites an INSERT query and returns the ID of the new row
+   * @param query - the SQL INSERT query to execute
+   * @param params - the query parameters
+   * @returns the ID of the inserted row
+   */
+  
 }
 
 /**
