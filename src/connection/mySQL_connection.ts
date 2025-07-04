@@ -1,16 +1,12 @@
 import * as mysql from 'mysql2/promise'; // the standard library for modern, asynchronous MySQL operations in Node.js
-import { config } from 'dotenv';  
 import { ConnectionConfig } from "./db_connection";
 import { DatabaseConnection } from "./db_connection";
-
-// Load environment variables from .env file
-config();
 
 /**
  * Implementation of DatabaseConnection for MySQL
  */
 export class MySQLConnection implements DatabaseConnection {
-  private session: mysql.Pool | null = null;
+  private pool: mysql.Pool | null = null; // holds a connection pool
   private config: ConnectionConfig;
 
   /**
@@ -26,7 +22,7 @@ export class MySQLConnection implements DatabaseConnection {
    */
   async connect(): Promise<void> {
     try {
-      this.session = mysql.createPool({
+      this.pool = mysql.createPool({
         host: this.config.host,
         port: this.config.port,
         user: this.config.user,
@@ -35,7 +31,7 @@ export class MySQLConnection implements DatabaseConnection {
       });
 
       // Check that the connection works
-      await this.session.query("SELECT 1");
+      await this.pool.query("SELECT 1");
     } catch (error: any) {
       throw new Error(`Failed to connect to database: ${error.message}`);
     }
@@ -45,10 +41,10 @@ export class MySQLConnection implements DatabaseConnection {
    * Closes the database connection
    */
   async disconnect(): Promise<void> {
-    if (this.session) {
+    if (this.pool) {
       try {
-        await this.session.end();
-        this.session = null;
+        await this.pool.end();
+        this.pool = null;
       } catch (error: any) {
         throw new Error(`Failed to disconnect from database: ${error.message}`);
       }
@@ -59,16 +55,17 @@ export class MySQLConnection implements DatabaseConnection {
    * Executes an SQL query that returns a single result
    * @param query The SQL query to execute
    * @param params The query parameters
-   * @returns An object of the specified type
+   * @returns an object of the specified type
    */
   async execute<T>(query: string, params: any[] = []): Promise<T> {
-    if (!this.session) {
+    if (!this.pool) {
       throw new Error("Not connected to database");
     }
 
     try {
-      const [result] = await this.session.execute(query, params);
-      return result as T;
+      // the result from execute is an array of rows
+      const [rows] = await this.pool.execute(query, params);
+      return (rows as T[])[0]; // we want the first row
     } catch (error: any) {
       throw new Error(`Execution failed: ${error.message}`);
     }
@@ -78,13 +75,13 @@ export class MySQLConnection implements DatabaseConnection {
    * Executes an SQL query that returns multiple results
    */
   async executeMultiple<T>(query: string, params?: any[]): Promise<T[]> {
-    if (!this.session) {
+    if (!this.pool) {
       throw new Error("Not connected to database");
     }
 
     try {
-      const [result] = await this.session.execute(query, params);
-      return result as T[];
+      const [rows] = await this.pool.execute(query, params);
+      return rows as T[];
     } catch (error: any) {
       throw new Error(`Execution failed: ${error.message}`);
     }
