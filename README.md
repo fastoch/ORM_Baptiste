@@ -1,6 +1,6 @@
 # Version du formateur (Baptiste Dinahet)
 
-waiting for Baptiste to provide his repository URL
+https://git.alt-tools.tech/gp-better-code-soul/orm
 
 # Structure du projet
 
