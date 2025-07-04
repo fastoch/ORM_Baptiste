@@ -52,7 +52,7 @@ export class SelectQueryBuilder<T> extends BaseQueryBuilder {
       conditionValue = value;              // the 3rd arg was the value
     }
 
-    // Build and store the clause
+    // Build and store the clause for later use in buildQuery()
     this.whereClauses.push(`${column} ${operator} ${this.formatValue(conditionValue)}`);
     return this;
   }
