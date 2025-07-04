@@ -1,5 +1,4 @@
 import * as mysql from 'mysql2/promise'; // the standard library for modern, asynchronous MySQL operations in Node.js
-import { OkPacket } from 'mysql2'; // the OkPacket type allows us to safely access the insertId in executeInsert()
 import { ConnectionConfig } from "./db_connection";
 import { DatabaseConnection } from "./db_connection";
 
@@ -94,10 +93,26 @@ export class MySQLConnection implements DatabaseConnection {
    * @param params - the query parameters
    * @returns the ID of the inserted row
    */
-  
+  async executeInsert(query: string, params: any[] = []): Promise<number> {
+    if (!this.pool) {
+      throw new Error("Not connected to database");
+    }
+
+    try {
+      const [result] = await this.pool.execute(query, params);
+      return (result as mysql.ResultSetHeader).insertId;
+    } catch (error: any) {
+      throw new Error(`Execution failed: ${error.message}`);
+    }
+  }
 }
 
 /**
  * IMPORTANT NOTES
  * The mysql2 library's execute() method always returns an array of rows
+ */
+
+/**
+ * TODO
+ * our own execute method has the same name as the execute method from the mysql2 library
  */
