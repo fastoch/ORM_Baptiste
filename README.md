@@ -52,6 +52,7 @@ Voici un exemple:
   "exclude": ["node_modules", "dist"]
 }
 ```
+- Pour lancer mon main.ts (application entry point): `npm start`
 
 # TODO du 2 juillet
 
