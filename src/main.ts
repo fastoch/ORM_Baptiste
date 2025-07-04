@@ -52,14 +52,16 @@ async function main() {
     console.log("Executing query:", query);
     console.log("With parameters:", params);
 
-    // 6. Execute the insert query using the new method
+    // 5. Execute the insert query using the new method
     const newUserId = await db.executeInsert(query, params);
     console.log(`✅ User inserted successfully! New user ID: ${newUserId}`);
 
   } catch (error) {
-    console.error('Error connecting to the database:', error);
+    console.error("❌ An error occurred:", error);
   } finally {
-
+    // 6. Disconnect from the database
+    await db.disconnect();
+    console.log('🔌 Disconnected from the database');
   }
 }
 
