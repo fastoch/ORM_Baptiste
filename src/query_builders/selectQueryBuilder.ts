@@ -31,13 +31,15 @@ export class SelectQueryBuilder<T> extends BaseQueryBuilder {
   /**
    * Adds a WHERE condition to the query. 
    * Multiple calls will be joined with 'AND'.
-   * The method is overloaded to support 3 signatures:
+   * The method is overloaded to support 2 signatures:
      * If only 2 arguments are provided (column, value), it assumes = as the operator
      * If 3 arguments are provided (column, operator, value), it uses the specified operator
-   * @returns this, so we can chain the method calls when building the query
+   * @returns this, so we can chain method calls when building the query
    */
-  where(column: string, value: any): this;
-  where(column: string, operator: string, value: any): this;
+  where(column: string, value: any): this;  // Signature 1: For simple equality (column, value)
+  where(column: string, operator: string, value: any): this;  // Signature 2: For custom operators (column, operator, value)
+  
+  // The actual code that runs when where() is called, must have a signature compatible with the 2 signatures above
   where(column: string, operatorOrValue: any, value?: any): this {
     let operator = '=';
     let conditionValue = operatorOrValue;
@@ -90,6 +92,9 @@ export class SelectQueryBuilder<T> extends BaseQueryBuilder {
 
     let query = `SELECT ${this.columnsToSelect.join(', ')} FROM ${this.tableName}`;
     if (this.whereClauses.length > 0) query += ` WHERE ${this.whereClauses.join(' AND ')}`;
+    if (this.orderByClauses.length > 0) query += ` ORDER BY ${this.orderByClauses.join(', ')}`;
+    if (this.limitValue !== null) query += ` LIMIT ${this.limitValue}`;
+    if (this.offsetValue !== null) query += ` OFFSET ${this.offsetValue}`;
 
     return query;
   }
