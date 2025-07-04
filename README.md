@@ -67,9 +67,9 @@ Voici un exemple:
 
 # TODO du 3 juillet
 
-- [ ] Implémenter la fonctionnalité de connection
+- [x] Implémenter la fonctionnalité de connection
 - [ ] implémenter la connection dans BaseModel
-- [ ] Utiliser la fonction create de BaseModel (ou de sa classe fille) pour insérer un user dans la DB
+- [ ] Utiliser la fonction create() de BaseModel pour insérer un user dans la DB
 - [x] Construire la classe SelectQueryBuilder
 - [ ] utiliser la fonction find pour trouver un User selon un filtre
 
