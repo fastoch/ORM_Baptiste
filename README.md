@@ -69,7 +69,7 @@ Voici un exemple:
 - [ ] Implémenter la fonctionnalité de connection
 - [ ] implémenter la connection dans BaseModel
 - [ ] Utiliser la fonction create de BaseModel (ou de sa classe fille) pour insérer un user dans la DB
-- [ ] Construire la classe SelectQueryBuilder
+- [x] Construire la classe SelectQueryBuilder
 - [ ] utiliser la fonction find pour trouver un User selon un filtre
 
 # Preventing SQL injection with Parameterization

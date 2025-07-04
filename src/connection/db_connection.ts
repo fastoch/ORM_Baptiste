@@ -1,5 +1,5 @@
 /**
- * Type alias defining methods to connect to the database
+ * Type alias defining methods to connect to the database (could be an interface)
  */
 export type DatabaseConnection = {
   /**

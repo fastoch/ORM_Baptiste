@@ -1,5 +1,4 @@
- //connection/mysql-connection.ts
-import * as mysql from 'mysql2/promise';
+import * as mysql from 'mysql2/promise'; // the standard library for modern, asynchronous MySQL operations in Node.js
 import { config } from 'dotenv';  
 import { ConnectionConfig } from "./db_connection";
 import { DatabaseConnection } from "./db_connection";
@@ -55,6 +54,7 @@ export class MySQLConnection implements DatabaseConnection {
       }
     }
   }
+
   /**
    * Executes an SQL query that returns a single result
    * @param query The SQL query to execute
@@ -90,3 +90,8 @@ export class MySQLConnection implements DatabaseConnection {
     }
   }
 }
+
+/**
+ * IMPORTANT NOTES
+ * The mysql2 library's execute() method always returns an array of rows
+ */
