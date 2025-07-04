@@ -46,7 +46,16 @@ async function main() {
 
     // This is what our builder should ideally produce:
     // const { query, params } = new InsertQueryBuilder().into("user").values(userData).build();
-    const query = "";
+    const query = "INSERT INTO user (username, email, password) VALUES (?, ?, ?)";
+    const params = [userData.username, userData.email, userData.password];
+
+    console.log("Executing query:", query);
+    console.log("With parameters:", params);
+
+    // 6. Execute the insert query using the new method
+    const newUserId = await db.executeInsert(query, params);
+    console.log(`✅ User inserted successfully! New user ID: ${newUserId}`);
+
   } catch (error) {
     console.error('Error connecting to the database:', error);
   } finally {
